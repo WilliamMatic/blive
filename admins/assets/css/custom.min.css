@@ -1,0 +1,9 @@
+
+/*# sourceMappingURL=custom.min.css.map */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,600,600i,700');
+.logo{font-family: 'Oswald', sans-serif !important;}
+*{
+	font-family: 'Outfit', sans-serif !important;
+}

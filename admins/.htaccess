@@ -1,0 +1,38 @@
+# Bloquer l'accès aux dossiers
+Options -Indexes
+
+
+ErrorDocument 404 http://localhost/B-LIVE/V1/admins/
+
+Options +FollowSymlinks
+RewriteEngine on
+
+
+RewriteRule ^dashboard$ index.php [L]
+RewriteRule ^follow$ follow.php [L]
+RewriteRule ^messages$ messages.php [L]
+RewriteRule ^tips$ tips.php [L]
+RewriteRule ^freelancers$ freelancers.php [L]
+RewriteRule ^jobseekers$ jobseekers.php [L]
+RewriteRule ^admin$ admin.php [L]
+RewriteRule ^country$ country.php [L]
+RewriteRule ^sectors$ sectors.php [L]
+RewriteRule ^contracts$ contracts.php [L]
+RewriteRule ^studylevel$ studylevel.php [L]
+RewriteRule ^candidates$ candidates.php [L]
+RewriteRule ^visitedprofiles$ visitedprofiles.php [L]
+RewriteRule ^featuredtips$ featuredtips.php [L]
+RewriteRule ^followers$ followers.php [L]
+RewriteRule ^missions$ missions.php [L]
+RewriteRule ^users$ users.php [L]
+RewriteRule ^astuce-([0-9]+)$ astuce.php?id=$1 [L]
+
+RewriteRule ^events$ events.php [L]
+RewriteRule ^events-actif$ events-actif.php [L]
+RewriteRule ^events-inactif$ events-inactif.php [L]
+
+RewriteRule ^city-([0-9]+)$ city.php?id=$1 [L]
+RewriteRule ^message-([0-9]+)$ message-content.php?id=$1 [L]
+RewriteRule ^missiondetail-([0-9]+)$ missiondetail.php?id=$1 [L]
+
+#RewriteRule ^profile?([a-z-]+)$ freelancer-detail.php?id=$1 [L]

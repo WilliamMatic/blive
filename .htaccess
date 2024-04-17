@@ -1,0 +1,16 @@
+ErrorDocument 404 http://localhost/B-LIVE/V1/
+
+Options +FollowSymlinks
+RewriteEngine on
+
+RewriteRule ^home$ index.php [L]
+RewriteRule ^login.html$ login.php [L]
+RewriteRule ^inscription.html$ inscription.php [L]
+RewriteRule ^tarif.html$ tarif.php [L]
+RewriteRule ^favorites.html$ favorites.php [L]
+RewriteRule ^profile.html$ profile.php [L]
+RewriteRule ^logout.html$ logout.php [L]
+RewriteRule ^login-admin$ login-admin.php [L]
+
+
+RewriteRule ^([a-z_0-9A-Z-]+)$ video.php?id=$1 [L]
