@@ -111,7 +111,7 @@ export default function Login({ navigation, route }) {
       }
 
       if (xhr.readyState == 3) {
-        setLoading(false);
+        setLoading(true);
       } 
 
       if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {

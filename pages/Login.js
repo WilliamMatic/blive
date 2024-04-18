@@ -183,7 +183,7 @@ export default function Login({ navigation, route }) {
           />
           <Text
             style={{
-              fontFamily: "Outfit_400Regular",
+              fontFamily: "Outfit_300Light",
               textAlign: "center",
               color: "gray",
             }}
