@@ -5,11 +5,11 @@
                 <script>
                     document.write(new Date().getFullYear());
                 </script>
-                © Mwinda Holding.
+                © B-LIVE.
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-end d-none d-sm-block">
-                    Design & Develop by PitUp
+                    
                 </div>
             </div>
         </div>

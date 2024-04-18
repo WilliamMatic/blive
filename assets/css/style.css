@@ -11912,7 +11912,7 @@ label.error {
   float: left;
   font-size: 26px;
   font-weight: 700;
-  color: var(--f7-theme-color);
+  color: #f29304;
   line-height: 20px;
   position: relative;
   top: -5px;
@@ -12136,7 +12136,7 @@ label.error {
   width: 30%;
   line-height: 50px;
   text-align: center;
-  background-color: var(--f7-theme-color);
+  background-color: #f29304;
   border: 0;
   outline: none;
   color: #fff;
@@ -12241,7 +12241,7 @@ label.error {
   margin: 4px;
 }
 .banner-wrapper .owl-dots .owl-dot.active span {
-  background-color: var(--f7-theme-color);
+  background-color: #f29304;
 }
 .banner-wrapper .banner-wrap {
   border-radius: 7px;
@@ -12362,7 +12362,7 @@ label.error {
 }
 .banner-wrapper .left-wrap .btn-lg, .banner-wrapper .left-wrap .btn-group-lg > .btn {
   color: #fff;
-  background-color: var(--f7-theme-color);
+  background-color: #f29304;
   min-width: 200px;
   line-height: 40px;
   font-size: 13px;
@@ -12398,6 +12398,20 @@ label.error {
     position: absolute;
     bottom: 50px;
   }
+
+  .banner-wrapper .left-wrap .btn-lg, .banner-wrapper .left-wrap .btn-group-lg > .btn {
+    display: block;
+    min-width: 150px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    line-height: 30px;
+  }
+
+  .banner-wrapper .left-wrap h2 {
+    display: block;
+    font-size: 28px;
+  }
+
 }
 .banner-wrapper .left-wrap .icon-bttn:hover .share-icons {
   display: block;
@@ -12527,7 +12541,7 @@ label.error {
   content: "";
   width: 50px;
   height: 50px;
-  background-color: var(--f7-theme-color);
+  background-color: #f29304;
   top: 50%;
   left: 50%;
   opacity: 0;
@@ -12910,7 +12924,7 @@ label.error {
 }
 .member-ul li.active a span {
   color: #fff;
-  background-color: var(--f7-theme-color);
+  background-color: #f29304;
 }
 .member-ul li.active a b {
   color: #222;
@@ -13040,7 +13054,7 @@ label.error {
   margin-top: 50px;
   width: 140px;
   height: 45px;
-  background-color: var(--f7-theme-color);
+  background-color: #f29304;
   border-radius: 5px;
   color: #fff;
   font-size: 12px;
@@ -13130,7 +13144,7 @@ label.error {
   display: flex;
 }
 .form-div label input:checked ~ .checkbox {
-  background-color: var(--f7-theme-color);
+  background-color: #f29304;
   border: 0;
 }
 .form-div label input:checked ~ .checkbox::before {
@@ -13164,7 +13178,7 @@ label.error {
 .form-div .form-btn {
   height: 60px;
   border-radius: 7px;
-  background-color: var(--f7-theme-color);
+  background-color: #f29304;
   width: 100%;
   color: #ffffff;
   font-size: 13px;
@@ -13459,7 +13473,7 @@ label.error {
   font-weight: 600;
 }
 .feedback-wrap .quote {
-  color: var(--f7-theme-color);
+  color: #f29304;
   position: absolute;
   height: 60px;
   width: 60px;
@@ -13537,7 +13551,7 @@ label.error {
   bottom: 130px;
 }
 .feedback-wrap .owl-dots .owl-dot.active span {
-  background-color: var(--f7-theme-color) !important;
+  background-color: #f29304 !important;
 }
 .feedback-wrap .owl-dots span {
   width: 8px !important;
@@ -13592,7 +13606,7 @@ label.error {
   font-size: 60px;
   font-weight: 700;
   line-height: 1.3;
-  color: var(--f7-theme-color);
+  color: #f29304;
 }
 @media only screen and (max-width: 1400px) {
   .banner-wraper h2 {
@@ -13659,7 +13673,7 @@ label.error {
   width: 30%;
   line-height: 65px;
   text-align: center;
-  background-color: var(--f7-theme-color);
+  background-color: #f29304;
   border: 0;
   outline: none;
   color: #fff;
@@ -13869,7 +13883,7 @@ label.error {
 }
 .price-table .price-tab .btn.active {
   color: #fff;
-  background-color: var(--f7-theme-color);
+  background-color: #f29304;
   border: 0;
 }
 .price-table .price-tab .btn i {

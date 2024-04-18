@@ -13,7 +13,7 @@
                         <li class="nav-item"><a class="nav-link" href="home">Accueil</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">Qui sommes nous</a></li>
                         <li class="nav-item"><a class="nav-link" href="tarif.html">Tarification</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Nous écrire</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -41,8 +41,23 @@
                     </div>
                 <?php endif ?>
 
-                
+                <div class="search-div">
+                    <input type="text" placeholder="Recherche" id="search" />
 
+                    <script type="text/javascript">
+                        let search = document.getElementById('search')
+                        // Ajouter un écouteur d'événements pour le pressage de la touche Entrée
+                        search.addEventListener('keypress', function(event) {
+                            // Vérifier si la touche pressée est la touche Entrée
+                            if (event.key === 'Enter' && search.value.length > 0) {
+                                // Exécuter l'action souhaitée ici
+                                window.location.href = "search.php?v="+search.value
+                            }else{
+                                return;
+                            }
+                        });
+                    </script>
+                </div>
 
             </div>
         </div>

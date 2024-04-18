@@ -25,7 +25,7 @@ function add(){
 
 			$infosfichier = pathinfo($_FILES['avatar']['name']);
 			$extension_upload = $infosfichier['extension'];
-			$extensions_autorisees = array('PNG', 'png', 'JPG', 'jpg', 'JPEG', 'jpeg');
+			$extensions_autorisees = array('PNG', 'png', 'JPG', 'jpg', 'JPEG', 'jpeg', 'webp', 'WEBP');
 			
 			if (in_array($extension_upload, $extensions_autorisees)) {
 				

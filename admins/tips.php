@@ -154,12 +154,19 @@
                                                         <td><?= $res->adminname ?></td>
                                                         <td><?= $res->datepub ?></td>
                                                         <td>
+                                                            
                                                             <a class="me-2" href="models/call/astuce/delete.php?id=<?= $res->id ?>">
                                                                 <i class="fa-solid fa-trash-can text-danger"></i>
                                                             </a>
+                                                            
                                                             <a href="astuce-<?= $res->id ?>">
                                                                 <i class="fa-solid fa-eye"></i>
                                                             </a>
+
+                                                            <a style="margin-left: 10px;" href="astuce-edit.php?id=<?= $res->id ?>">
+                                                                Modifier
+                                                            </a>
+
                                                         </td>
                                                     </tr>
                                                 <?php }$listAll->closeCursor(); ?>

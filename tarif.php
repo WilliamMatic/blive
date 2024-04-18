@@ -42,8 +42,8 @@
                             <p class="card-text" style="text-align: center;">
                                 Accès limité à certains contenus.
                             </p>
-                            <h5 style="text-align: center;"><b class="text-danger">$9.99/mois</b></h5>
-                            <button class="btn btn-danger btn-block">Chosir</button>
+                            <h5 style="text-align: center; color: #f29304;"><b class="" style="color: #f29304;">$9.99/mois</b></h5>
+                            <button class="btn btn-danger btn-block" style="background-color: #f29304;border: 1px solid #f29304;">Chosir</button>
                           </div>
                         </div>
                     </div>
@@ -55,8 +55,8 @@
                             <p class="card-text" style="text-align: center;">
                                 Accès illimité à tous les contenus.
                             </p>
-                            <h5 style="text-align: center;"><b class="text-danger">$19.99/mois</b></h5>
-                            <button class="btn btn-danger btn-block">Chosir</button>
+                            <h5 style="text-align: center; color: #f29304;"><b class="" style="color: #f29304;">$19.99/mois</b></h5>
+                            <button class="btn btn-danger btn-block" style="background-color: #f29304;border: 1px solid #f29304;">Chosir</button>
                           </div>
                         </div>
                     </div>
@@ -68,8 +68,8 @@
                             <p class="card-text" style="text-align: center;">
                                 Accès illimité + Contenus exclusifs.
                             </p>
-                            <h5 style="text-align: center;"><b class="text-danger">$29.99/mois</b></h5>
-                            <button class="btn btn-danger btn-block">Chosir</button>
+                            <h5 style="text-align: center; color: #f29304;"><b class="" style="color: #f29304;">$29.99/mois</b></h5>
+                            <button class="btn btn-danger btn-block" style="background-color: #f29304;border: 1px solid #f29304;">Chosir</button>
                           </div>
                         </div>
                     </div>

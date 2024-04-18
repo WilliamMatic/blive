@@ -10,6 +10,9 @@
                 <a href="#">
                     <img src="assets/images/icon-21.png" alt="icon" class="icon-img"> 
                 </a>
+                <a href="#">
+                    <img src="assets/images/icon-22.png" style="width: 145px;height: 70px;vertical-align: middle;position: relative;top:7px;" alt="icon" class="icon-img"> 
+                </a>
             </div>
             <div class="col-sm-5 offset-sm-1 text-right">
                 <form action="#" class="mt-0">
@@ -17,7 +20,7 @@
                     <button>S'abonner</button>
                 </form>                    
             </div>
-            <!-- <div class="col-sm-12">
+            <div class="col-sm-12">
                 <div class="middle-footer">
                     <div class="row">
                         <div class="col-md-4 col-lg-2 col-sm-6 col-xs-6 md-mb25">
@@ -30,60 +33,52 @@
                             </ul>
                         </div>
                         <div class="col-md-4 col-lg-2 col-sm-6 col-xs-6 md-mb25">
-                            <h5>ONLINE</h5>
+                            <h5>Nos partenaires</h5>
                             <ul>
-                                <li><a href="#">Web</a></li>
-                                <li><a href="#">Series</a></li>
-                                <li><a href="#">Natak</a></li>
-                                <li><a href="#">Comedy</a></li>
-                                <li><a href="#">Action</a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
                             </ul>
                         </div>
                         <div class="col-md-4 col-lg-2 col-sm-6 col-xs-6 md-mb25">
-                            <h5>Language</h5>
+                            <h5>Langue</h5>
                             <ul>
-                                <li><a href="#">English</a></li>
-                                <li><a href="#">Spanish</a></li>
-                                <li><a href="#">Arab</a></li>
-                                <li><a href="#">Urdu</a></li>
-                                <li><a href="#">Brazil</a></li>
+                                <li><a href="#">Français</a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
                             </ul>
                         </div>
                         <div class="col-md-4 col-lg-2 col-sm-6 col-xs-6">
-                            <h5>Channel</h5>
+                            <h5>Nos pages</h5>
                             <ul>
-                                <li><a href="#">Makeup</a></li>
-                                <li><a href="#">Dresses</a></li>
-                                <li><a href="#">Girls</a></li>
-                                <li><a href="#">Sandals</a></li>
-                                <li><a href="#">Headphones</a></li>
+                                <li><a href="home">Accueil</a></li>
+                                <li><a href="#about">Qui sommes nous</a></li>
+                                <li><a href="tarif.html">Tarification</a></li>
                             </ul>
                         </div>
-                        <div class="col-md-4 col-lg-2 col-sm-6 col-xs-6">
-                            <h5>About</h5>
-                            <ul>
-                                <li><a href="#">FAQ</a></li>
-                                <li><a href="#">Term of use</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Feedback</a></li>
-                                <li><a href="#">Careers</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-4 col-lg-2 col-sm-6 col-xs-6">
-                            <h5 class="mb-3">Office</h5>
-                            <p style="width: 100%;">41 madison ave, floor 24 new work, NY 10010 <br>1-877-932-7111</p>
-                            <p style="width: 100%;">41 madison ave, floor 24 new work, NY 10010 <br>1-877-932-7111</p>
+                        <div id="contact" class="col-md-8 col-lg-4 col-sm-12 col-xs-12">
+                            <h5 class="mb-3">A propos</h5>
+                            <p style="width: 100%;">
+                                Nous sommes un groupe de sociétés multisectoriel axée sur l'innovation Nous travaillons sans relâche pour le développement de la société grâce à notre savoir-faire dans plusieurs domaines.
+                            </p>
+                            <p style="width: 100%;">+243 829 582 290</p>
+                            <p style="width: 100%;"> infos@balezi-group.net</p>
+                            <p style="width: 100%;">Camp bumba villa 167 Q/ Salongo C/ lemba</p>
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
 
             <div class="col-sm-12 lower-footer"></div>
             <div class="col-sm-6">
-                <p class="copyright-text">© <?= date('Y') ?> copyright. All rights reserved.</p>
+                <p class="copyright-text">© <?= date('Y') ?> droits d'auteur. Tous droits réservés.</p>
             </div>
             <div class="col-sm-6 text-right">
-                <p class="float-right copyright-text">En cas de souci, <a href="contact">Contactez-nous</a></p>
+                <p class="float-right copyright-text">En cas de souci, <a href="#contact">Contactez-nous</a></p>
             </div>
         </div>
     </div>

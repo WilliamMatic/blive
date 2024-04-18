@@ -1,5 +1,11 @@
 <?php session_start(); ?>
 
+<?php  
+    if ( !isset($_GET['v']) || empty($_GET['v']) ) {
+       exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,70 +31,15 @@
         <!-- header wrapper -->
         <!-- banenr wrapper -->
 
-        <!-- Live actuel -->
-        <div class="banner-wrapper mb-4">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="banner-slider owl-carousel owl-theme" id="autoplaylive">
-
-                            <?php  
-                                require 'models/events-live.php';
-                                while ($res = $req->fetch(PDO::FETCH_OBJ)) {
-                            ?>
-
-                            
-                            <div class='owl-items'>
-                                <div class='banner-wrap justify-content-between align-items-center'>
-                                    <div class='left-wrap'>
-                                        <a href="href='<?= $res->youtube ?>'">
-                                            <span class='rnd'>LIVE</span>
-                                        </a>
-                                        <a href="href='<?= $res->youtube ?>'">
-                                            <h2><?= substr( $res->titre, 0, 18).'...' ?></h2>
-                                        </a>
-
-                                        <span class="tag"><?= $res->datepub ?></span>
-                                        <span class="tag"><b><?= $res->secteurname ?></b></span>
-                                        <span class="tag"><b><?= $res->price.'$' ?></b></span>
-
-                                        <p>
-                                            <?= substr( $res->contenue, 0, 151).'...' ?>
-                                        </p>
-                                        <a href='<?= $res->youtube ?>' class='btn btn-lg'><img src='assets/images/play.png' alt='icn'>Regarder maintenant</a>
-                                    </div>
-                                    <div class='right-wrap' style="background-image: url(admins/assets/astuce/<?= $res->avatar ?>);"></div>
-                                </div>
-                            </div>
-
-                            <?php  
-
-                                }$req->closeCursor();
-
-                            ?>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- banenr wrapper -->
-
-
         <!-- slider wrapper -->
         
         <!-- Live terminé -->
-
-        <?php  
-            require 'models/secteurs-inlives.php';
-            while ($result = $request->fetch(PDO::FETCH_OBJ)) {
-        ?>
 
         <div class="slide-wrapper">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 text-left mb-4 mt-4">
-                        <h2><?= ucfirst($result->secteurname) ?></h2>
+                        <h2>Mot clé: <mark><?= $_GET['v'] ?></mark></h2>
                     </div>
                     
                 </div>
@@ -102,9 +53,7 @@
 
                             <?php  
 
-                                $_GET['secteur'] = $result->secteur;
-
-                                require 'models/events-inlive.php';
+                                require 'models/events-search.php';
                                 while ($res = $req->fetch(PDO::FETCH_OBJ)) {
                             ?>
                             
@@ -136,11 +85,6 @@
 
             </div>
         </div>
-        <?php  
-
-            }$request->closeCursor();
-
-        ?>
         <!-- slider wrapper -->
         <!-- footer wrapper -->
         <?php require 'views/footer.php'; ?>
