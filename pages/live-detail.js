@@ -61,6 +61,7 @@ export default function Login({ navigation, route }) {
   let liveid = route.params.id;
   let livetitre = route.params.titre;
   let livedescription = route.params.description;
+  let user = route.params.user;
 
   const [appIsReady, setAppIsReady] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -103,14 +104,14 @@ export default function Login({ navigation, route }) {
     <SafeAreaView style={styles.main_container} onLayout={onLayoutRootView}>
       <View style={styles.container} onLayout={onLayoutRootView}>
         <StatusBar
-          backgroundColor={"#212429"}
+          backgroundColor={"#f29304"}
           barStyle={"light-content"}
         ></StatusBar>
 
-        <Header navigation={navigation} route={route} />
+        <Header navigation={navigation} route={route} user={user.avatar} />
 
         <ScrollView
-          style={{ width: "100%" }}
+          style={{ width: "100%", paddingHorizontal: 15 }}
           showsVerticalScrollIndicator={false}
         >
           <View>
@@ -119,7 +120,7 @@ export default function Login({ navigation, route }) {
                 fontFamily: "Outfit_700Bold",
                 color: "white",
                 fontSize: 25,
-                marginTop: 5,
+                marginTop: 15,
               }}
             >
               {livetitre}
@@ -146,15 +147,15 @@ export default function Login({ navigation, route }) {
             </Text>
 
             <WebView
-            style={{
+              style={{
                 marginTop: 30,
                 height: 300,
                 borderRadius: 20,
-            }}
+              }}
               javaScriptEnabled={true}
               domStorageEnabled={true}
               allowsFullscreenVideo={true}
-              source={{ uri: "https://www.youtube.com/embed/"+liveid }}
+              source={{ uri: "https://www.youtube.com/embed/" + liveid }}
             />
           </View>
         </ScrollView>
@@ -188,6 +189,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#212429",
-    paddingHorizontal: 15,
   },
 });

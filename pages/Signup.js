@@ -49,6 +49,9 @@ export default function Login({ navigation, route }) {
   const [appIsReady, setAppIsReady] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+
   const [users, setUsers] = useState([]);
 
   const [username, setUsername] = useState("");
@@ -84,36 +87,40 @@ export default function Login({ navigation, route }) {
     return null;
   }
 
-  function etatPassowrd() {
-    if (passwordVisible) {
-      setPasswordVisible(false);
-      setPasswordType("eye");
-    } else {
-      setPasswordVisible(true);
-      setPasswordType("eye-slash");
-    }
-  }
-
   function SIGNUP() {
     if (email.length < 1) {
-      Alert.alert("Echec", "L'adresse email est obligatoire");
+      setError("L'adresse email est obligatoire");
+      setTimeout(() => {
+        setError("");
+      }, 1500);
       return;
     }
 
     if (username.length < 1) {
-      Alert.alert("Echec", "Le username est obligatoire");
+      setError("Le username est obligatoire");
+      setTimeout(() => {
+        setError("");
+      }, 1500);
       return;
     }
 
     if (phone.length < 1) {
-      Alert.alert("Echec", "Le numéro de telephone est obligatoire");
+      setError("Le numéro de telephone est obligatoire");
+      setTimeout(() => {
+        setError("");
+      }, 1500);
       return;
     }
 
     if (password.length < 1) {
-      Alert.alert("Echec", "Le mot de passe est obligatoire");
+      setError("Le mot de passe est obligatoire");
+      setTimeout(() => {
+        setError("");
+      }, 1500);
       return;
     }
+
+    setLoading(true);
 
     var xml = new XMLHttpRequest();
     xml.open(
@@ -150,16 +157,27 @@ export default function Login({ navigation, route }) {
         switch (xml.responseText) {
           case "Votre compte a été créé avec succès":
             setLoading(false);
+            
+            setError("");
+            setSuccess("Votre compte a été créé avec succès");
+
             setUsername("");
             setPhone("");
             setEmail("");
             setPassword("");
-            navigation.navigate("login");
+
+            setTimeout(() => {
+              setSuccess("");
+              navigation.navigate("login");
+            }, 1500);
             break;
 
           default:
             setLoading(false);
-            Alert.alert("Echec", xml.responseText);
+            setError("" + xml.responseText);
+            setTimeout(() => {
+              setError("");
+            }, 1500);
             return;
             break;
         }
@@ -173,7 +191,7 @@ export default function Login({ navigation, route }) {
     <SafeAreaView style={styles.main_container} onLayout={onLayoutRootView}>
       <View style={styles.container} onLayout={onLayoutRootView}>
         <StatusBar
-          backgroundColor={"#212429"}
+          backgroundColor={"#f29304"}
           barStyle={"lihgt-content"}
         ></StatusBar>
 
@@ -206,11 +224,46 @@ export default function Login({ navigation, route }) {
             }}
           >
             Inscrivez-vous dès maintenant pour ne rien manquer de vos vidéos en
-            direct préférées sur notre application mobile YouTube Live.
-            Rejoignez notre communauté passionnée et restez connecté en tout
-            temps.
+            direct préférées sur notre application mobile. Rejoignez notre
+            communauté passionnée et restez connecté en tout temps.
           </Text>
         </View>
+
+        {error.length > 0 ? (
+          <View
+            style={{
+              width: "100%",
+              padding: 10,
+              backgroundColor: "#f8d7da",
+              borderWidth: 1,
+              borderColor: "#f5c2c7",
+              marginBottom: 20,
+              borderRadius: 2,
+            }}
+          >
+            <Text style={{ color: "#842029", fontFamily: "Outfit_500Medium" }}>
+              {error}
+            </Text>
+          </View>
+        ) : null}
+
+        {success.length > 0 ? (
+          <View
+            style={{
+              width: "100%",
+              padding: 10,
+              backgroundColor: "#d1e7dd",
+              borderWidth: 1,
+              borderColor: "#badbcc",
+              marginBottom: 20,
+              borderRadius: 2,
+            }}
+          >
+            <Text style={{ color: "#0f5132", fontFamily: "Outfit_500Medium" }}>
+              {success}
+            </Text>
+          </View>
+        ) : null}
 
         <ScrollView
           style={{ width: "100%" }}
@@ -345,7 +398,7 @@ export default function Login({ navigation, route }) {
             style={{
               width: "100%",
               height: 55,
-              backgroundColor: "#212429",
+              backgroundColor: "#f29304",
               borderRadius: 10,
               flexDirection: "row",
               justifyContent: "center",

@@ -81,7 +81,7 @@ export default function Home({ navigation, route }) {
   return (
     <Tab.Navigator
       screenOptions={({ route, focused }) => ({
-        tabBarActiveTintColor: "#FFF",
+        tabBarActiveTintColor: "#f29304",
         tabBarInactiveTintColor: "#5F6571",
         tabBarShowLabel: true,
         headerShown: false,
@@ -110,7 +110,7 @@ export default function Home({ navigation, route }) {
                 style={{
                   width: focused ? 25 : 20,
                   height: focused ? 30 : 25,
-                  tintColor: focused ? "#fff" : "#5F6571",
+                  tintColor: focused ? "#f29304" : "#5F6571",
                 }}
               />
             );
@@ -141,7 +141,7 @@ export default function Home({ navigation, route }) {
                 style={{
                   width: focused ? 25 : 20,
                   height: focused ? 30 : 25,
-                  tintColor: focused ? "#fff" : "#5F6571",
+                  tintColor: focused ? "#f29304" : "#5F6571",
                 }}
               />
             );
@@ -172,7 +172,7 @@ export default function Home({ navigation, route }) {
                 style={{
                   width: focused ? 25 : 20,
                   height: focused ? 30 : 25,
-                  tintColor: focused ? "#fff" : "#5F6571",
+                  tintColor: focused ? "#f29304" : "#5F6571",
                 }}
               />
             );

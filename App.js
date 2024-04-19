@@ -28,6 +28,7 @@ import LoginScreen from "./pages/Login";
 import SignupScreen from "./pages/Signup";
 import HomeScreen from "./pages/Home";
 import LiveScreen from "./pages/live-detail";
+import ProfilScreen from "./pages/Profil";
 
 const Stack = createNativeStackNavigator();
 
@@ -132,6 +133,23 @@ export default function App() {
           component={LiveScreen}
           options={({ navigation }) => ({
             title: "Détail du live",
+            headerStyle: { backgroundColor: "#df1085" },
+            headerShown: false,
+            headerTitleAlign: "center",
+            headerTintColor: "#ffffff",
+            headerTitleStyle: {
+              fontWeight: "normal",
+              fontFamily: "Outfit_400Regular",
+              fontSize: 15,
+            },
+          })}
+        />
+        
+        <Stack.Screen
+          name="profil"
+          component={ProfilScreen}
+          options={({ navigation }) => ({
+            title: "Mon profil",
             headerStyle: { backgroundColor: "#df1085" },
             headerShown: false,
             headerTitleAlign: "center",

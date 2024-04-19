@@ -53,12 +53,12 @@ export default function Login({ navigation, route }) {
   const [appIsReady, setAppIsReady] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const [error, setError] = useState("");
+
   const [users, setUsers] = useState([]);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const [passwordVisible, setPasswordVisible] = useState(true);
 
   useEffect(() => {
     async function prepare() {
@@ -88,13 +88,21 @@ export default function Login({ navigation, route }) {
 
   function LOGIN() {
     if (email.length < 1) {
-      Alert.alert("Echec", "L'adresse email est obligatoire");
+      setError("L'adresse email est obligatoire");
+      setTimeout(() => {
+        setError("");
+      }, 1500);
       return;
     }
     if (password.length < 1) {
-      Alert.alert("Echec", "Le mot de passe est obligatoire");
+      setError("Le mot de passe est obligatoire");
+      setTimeout(() => {
+        setError("");
+      }, 1500);
       return;
     }
+
+    setLoading(true);
 
     var xml = new XMLHttpRequest();
     xml.open(
@@ -127,12 +135,18 @@ export default function Login({ navigation, route }) {
         switch (xml.responseText) {
           case "Utilisateur introuvable":
             setLoading(false);
-            Alert.alert("Echec", xml.responseText);
+            setError("" + xml.responseText);
+            setTimeout(() => {
+              setError("");
+            }, 1500);
             break;
-            
+
           case "Une erreur est survenue! Veuillez ressayer plus tard":
             setLoading(false);
-            Alert.alert("Echec", xml.responseText);
+            setError("" + xml.responseText);
+            setTimeout(() => {
+              setError("");
+            }, 1500);
             break;
 
           default:
@@ -140,13 +154,13 @@ export default function Login({ navigation, route }) {
             setUsers(JSON.parse(xml.responseText));
             setEmail("");
             setPassword("");
+            setError("");
             navigation.navigate("home", {
               user: JSON.parse(xml.responseText),
             });
             break;
         }
       }
-
     };
 
     xml.send(null);
@@ -156,7 +170,7 @@ export default function Login({ navigation, route }) {
     <SafeAreaView style={styles.main_container} onLayout={onLayoutRootView}>
       <View style={styles.container} onLayout={onLayoutRootView}>
         <StatusBar
-          backgroundColor={"#212429"}
+          backgroundColor={"#f29304"}
           barStyle={"lihgt-content"}
         ></StatusBar>
 
@@ -169,7 +183,7 @@ export default function Login({ navigation, route }) {
             marginTop: 20,
             justifyContent: "center",
             alignItems: "center",
-            marginBottom: 30,
+            marginBottom: 20,
           }}
         >
           <Image
@@ -189,10 +203,28 @@ export default function Login({ navigation, route }) {
             }}
           >
             Connectez-vous pour accéder à vos vidéos en direct préférées sur
-            notre application mobile. Profitez d'une expérience de
-            visionnage fluide et immersive où que vous soyez.
+            notre application mobile. Profitez d'une expérience de visionnage
+            fluide et immersive où que vous soyez.
           </Text>
         </View>
+
+        {error.length > 0 ? (
+          <View
+            style={{
+              width: "100%",
+              padding: 10,
+              backgroundColor: "#f8d7da",
+              borderWidth: 1,
+              borderColor: "#f5c2c7",
+              marginBottom: 20,
+              borderRadius: 2,
+            }}
+          >
+            <Text style={{ color: "#842029", fontFamily: "Outfit_500Medium" }}>
+              {error}
+            </Text>
+          </View>
+        ) : null}
 
         <View
           style={{
@@ -261,7 +293,7 @@ export default function Login({ navigation, route }) {
           style={{
             width: "100%",
             height: 55,
-            backgroundColor: "#212429",
+            backgroundColor: "#f29304",
             borderRadius: 10,
             flexDirection: "row",
             justifyContent: "center",

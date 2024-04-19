@@ -26,6 +26,8 @@ import {
 } from "@expo/vector-icons";
 
 import Header from "../components/Header";
+import Live from "../components/Live";
+import Recommanded from "../components/Recommanded";
 
 import * as SplashScreen from "expo-splash-screen";
 import * as Font from "expo-font";
@@ -58,12 +60,16 @@ export default function Login({ navigation, route }) {
     Outfit_900Black,
   });
 
+  let user = route.params.params_user;
+
   const [appIsReady, setAppIsReady] = useState(false);
   const [loading, setLoading] = useState(false);
   const [statut, setStatut] = useState(false);
 
-  const [erreur, setErreur] = useState("");
+  const [feeback, setFeedback] = useState("");
+  const [feeback1, setFeedback1] = useState("");
   const [live, setLive] = useState([]);
+  const [inlive, setInlive] = useState([]);
 
   const [modalVisible, setModalVisible] = useState(false);
   const [titre, setTitre] = useState("");
@@ -94,6 +100,8 @@ export default function Login({ navigation, route }) {
   }, []);
 
   useEffect(() => {
+    setLoading(true);
+
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "https://balezi-group.net/blive/models/m_live.php", true);
 
@@ -112,25 +120,70 @@ export default function Login({ navigation, route }) {
 
       if (xhr.readyState == 3) {
         setLoading(true);
-      } 
+      }
 
       if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
         switch (xhr.responseText) {
           case "Affichage des lives échouées":
             setLoading(false);
-            setErreur("Affichage des lives échouées");
+            setFeedback("Affichage des lives échouées");
             break;
 
           case "Aucun live disponible":
             setLoading(false);
-            setErreur("Aucun live disponible");
+            setFeedback("Aucun live disponible");
             break;
 
           default:
             setLoading(false);
-            setErreur("");
+            setFeedback("");
             setLive(JSON.parse(xhr.responseText));
-            console.log(live);
+        }
+      }
+    };
+
+    xhr.send(null);
+  }, [statut]);
+
+  useEffect(() => {
+    setLoading(true);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://balezi-group.net/blive/models/m_inlive.php", true);
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 0) {
+        setLoading(true);
+      }
+
+      if (xhr.readyState == 1) {
+        setLoading(true);
+      }
+
+      if (xhr.readyState == 2) {
+        setLoading(true);
+      }
+
+      if (xhr.readyState == 3) {
+        setLoading(true);
+      }
+
+      if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+        switch (xhr.responseText) {
+          case "Affichage des lives échouées":
+            setLoading(false);
+            setFeedback1("Affichage des lives échouées");
+            break;
+
+          case "Aucun live disponible":
+            setLoading(false);
+            setFeedback1("Aucun live disponible");
+            break;
+
+          default:
+            setLoading(false);
+            setFeedback1("");
+            setInlive(JSON.parse(xhr.responseText));
         }
       }
     };
@@ -147,98 +200,75 @@ export default function Login({ navigation, route }) {
   if (!appIsReady) {
     return null;
   }
-  const url = "https://balezi-group.net/blive/admins/assets/astuce/";
 
   return (
     <SafeAreaView style={styles.main_container} onLayout={onLayoutRootView}>
       <View style={styles.container} onLayout={onLayoutRootView}>
         <StatusBar
-          backgroundColor={"#212429"}
+          backgroundColor={"#f29304"}
           barStyle={"light-content"}
         ></StatusBar>
 
-        <Header navigation={navigation} route={route} />
+        <Header navigation={navigation} route={route} user={user.avatar} />
 
-        <View>
-          <Text
-            style={{
-              fontFamily: "Outfit_700Bold",
-              color: "white",
-              fontSize: 25,
-              marginTop: 5,
-            }}
-          >
-            Nos lives
-          </Text>
+        <View
+          style={{
+            paddingHorizontal: 10,
+          }}
+        >
+          <View>
+            <Text
+              style={{
+                fontFamily: "Outfit_700Bold",
+                color: "white",
+                fontSize: 15,
+                marginTop: 15,
+              }}
+            >
+              Regarder maintenant
+            </Text>
+          </View>
+          {feeback.length > 0 ? (
+            <Text
+              style={{
+                fontFamily: "Outfit_400Regular",
+                color: "white",
+                fontSize: 11,
+              }}
+            >
+              Aucun live pour le moment
+            </Text>
+          ) : (
+            <Live navigation={navigation} route={route} live={live} user={user} />
+          )}
+
+          {/* Anciens lives */}
+          <View style={{ marginVertical: 25 }}>
+            <Text
+              style={{
+                fontFamily: "Outfit_700Bold",
+                color: "white",
+                fontSize: 15,
+              }}
+            >
+              Nous vous récommandons
+            </Text>
+          </View>
+
+          {feeback1.length > 0 ? (
+            <Text
+              style={{
+                fontFamily: "Outfit_400Regular",
+                color: "white",
+                fontSize: 11,
+              }}
+            >
+              Aucune récommandation pour le moment
+            </Text>
+          ) : (
+            <Recommanded navigation={navigation} route={route} recommanded={inlive} user={user} />
+          )}
         </View>
-
-        <>
-          <FlatList
-            showsVerticalScrollIndicator={false}
-            data={live}
-            renderItem={({ item }) => (
-              <View
-                style={{
-                  marginTop: 30,
-                  width: "100%",
-                  borderBottomWidth: 1,
-                  borderBottomColor: "silver",
-                  paddingBottom: 20,
-                  position: "relative",
-                }}
-              >
-                <Image
-                  style={{
-                    resizeMode: "cover",
-                    height: 200,
-                    width: "100%",
-                    marginBottom: 10,
-                  }}
-                  source={{ uri: url+''+item.avatar }}
-                />
-
-                <Text
-                  style={{
-                    fontFamily: "Outfit_500Medium",
-                    color: "white",
-                    width: "100%",
-                    fontSize: 25,
-                    marginBottom: 10,
-                  }}
-                >
-                  {item.titre.substring(0, 30)+'...'}
-                </Text>
-
-                <Text
-                  style={{
-                    fontFamily: "Outfit_300Light",
-                    color: "white",
-                    width: "100%",
-                    fontSize: 12,
-                  }}
-                >
-                  {item.contenue.substring(0, 250)}
-                </Text>
-
-                <TouchableOpacity
-                  style={{
-                    position: "absolute",
-                    top: 80,
-                    left: "44%",
-                  }}
-                  // onPress={() => setModalVisible(true)}
-                  onPress={() =>
-                    navigation.navigate("live", { id: item.youtube, titre: item.titre, description: item.contenue  })
-                  }
-                >
-                  <FontAwesome name="youtube-play" size={45} color="red" />
-                </TouchableOpacity>
-              </View>
-            )}
-            keyExtractor={(item) => item.id}
-            // ListFooterComponent={<BottomFlat />}
-          />
-        </>
       </View>
       {loading ? (
         <View
@@ -300,7 +330,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#212429",
-    paddingHorizontal: 15,
   },
   modalContainer: {
     flex: 1,

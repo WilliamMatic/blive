@@ -21,7 +21,7 @@ import {
   FontAwesome,
   SimpleLineIcons,
   Ionicons,
-  Feather
+  Feather,
 } from "@expo/vector-icons";
 
 import Header from "../components/Header";
@@ -56,6 +56,8 @@ export default function Login({ navigation, route }) {
     Outfit_800ExtraBold,
     Outfit_900Black,
   });
+
+  let user = route.params.params_user;
 
   const [appIsReady, setAppIsReady] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -94,91 +96,21 @@ export default function Login({ navigation, route }) {
     return null;
   }
 
-  function etatPassowrd() {
-    if (passwordVisible) {
-      setPasswordVisible(false);
-      setPasswordType("eye");
-    } else {
-      setPasswordVisible(true);
-      setPasswordType("eye-slash");
-    }
-  }
-
-  function LOGIN() {
-    if (email.length < 1) {
-      Alert.alert("Echec", "L'adresse email est obligatoire");
-      return;
-    }
-    if (password.length < 1) {
-      Alert.alert("Echec", "Le mot de passe est obligatoire");
-      return;
-    }
-
-    var xml = new XMLHttpRequest();
-    xml.open(
-      "GET",
-      "https://sopping-schedulers.000webhostapp.com/models_apis/API_LOGIN.php?email=" +
-        email +
-        "&password=" +
-        password,
-      true
-    );
-
-    xml.onreadystatechange = function () {
-      if (xml.readyState == 0) {
-        setLoading(true);
-      }
-
-      if (xml.readyState == 1) {
-        setLoading(true);
-      }
-
-      if (xml.readyState == 2) {
-        setLoading(true);
-      }
-
-      if (xml.readyState == 3) {
-        setLoading(true);
-      }
-
-      if (xml.readyState == 4 && (xml.status == 200 || xml.status == 0)) {
-        switch (xml.responseText) {
-          case "Utilisateur introuvable":
-            setLoading(false);
-            Alert.alert("Echec", xml.responseText);
-            break;
-
-          default:
-            setLoading(false);
-            setUsers(JSON.parse(xml.responseText));
-            setEmail("");
-            setPassword("");
-            navigation.navigate("home", {
-              user: JSON.parse(xml.responseText),
-            });
-            break;
-        }
-      }
-    };
-
-    xml.send(null);
-  }
-
   return (
     <SafeAreaView style={styles.main_container} onLayout={onLayoutRootView}>
       <View style={styles.container} onLayout={onLayoutRootView}>
         <StatusBar
-          backgroundColor={"#212429"}
+          backgroundColor={"#f29304"}
           barStyle={"light-content"}
         ></StatusBar>
 
-        <Header navigation={navigation} route={route} />
+        <Header navigation={navigation} route={route} user={user.avatar} />
 
         <ScrollView
-          style={{ width: "100%" }}
+          style={{ width: "100%", paddingHorizontal: 15 }}
           showsVerticalScrollIndicator={false}
         >
-          <View>
+          {/* <View>
             <Text
               style={{
                 fontFamily: "Outfit_700Bold",
@@ -189,7 +121,7 @@ export default function Login({ navigation, route }) {
             >
               Mon compte
             </Text>
-          </View>
+          </View> */}
 
           <TouchableOpacity
             style={{
@@ -201,6 +133,11 @@ export default function Login({ navigation, route }) {
               alignItems: "center",
               borderRadius: 10,
               padding: 20,
+            }}
+            onPress={() => {
+              navigation.navigate("profil", {
+                user: user,
+              });
             }}
           >
             <Feather name="user" size={45} color="white" />
@@ -216,9 +153,8 @@ export default function Login({ navigation, route }) {
             >
               Informations personnelles
             </Text>
-            
           </TouchableOpacity>
-          
+
           <TouchableOpacity
             style={{
               marginTop: 30,
@@ -244,7 +180,6 @@ export default function Login({ navigation, route }) {
             >
               Mes abonnements
             </Text>
-            
           </TouchableOpacity>
           <TouchableOpacity
             style={{
@@ -271,9 +206,7 @@ export default function Login({ navigation, route }) {
             >
               Paramètrage
             </Text>
-            
           </TouchableOpacity>
-          
         </ScrollView>
       </View>
       {loading ? (
@@ -305,6 +238,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#212429",
-    paddingHorizontal: 15,
   },
 });

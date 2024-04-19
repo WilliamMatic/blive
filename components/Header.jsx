@@ -22,8 +22,10 @@ import {
   Ionicons,
 } from "@expo/vector-icons";
 
+const url = "https://balezi-group.net/blive/admins/assets/avatar/";
+const avatar_cover = "https://balezi-group.net/blive/admins/assets/images/user.png";
 // Définition du composant enfant
-export default function Header({ navigation, route }) {
+export default function Header({ navigation, route, user }) {
   return (
     <View
       style={{
@@ -32,32 +34,55 @@ export default function Header({ navigation, route }) {
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
+        paddingTop: 15,
+        paddingBottom: 15,
+        backgroundColor: "#f29304",
+        paddingHorizontal: 15,
       }}
     >
-      <TouchableOpacity onPress={() => navigation.navigate("login")}>
-        <SimpleLineIcons name="logout" size={20} color="white" />
-      </TouchableOpacity>
+      <Image
+        style={{
+          resizeMode: "contain",
+          height: 45,
+          width: 60,
+        }}
+        source={require("../assets/public/logo-blanc.png")}
+      />
 
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <TouchableOpacity
-          style={{ marginRight: 15 }}
-          onPress={() => navigation.navigate("compte")}
+          style={{ marginRight: 20 }}
+          onPress={() => navigation.navigate("login")}
         >
-          <Ionicons name="notifications" size={24} color="white" />
+          <SimpleLineIcons name="logout" size={20} color="white" />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate("compte")}>
-          <Image
-            style={{
-              resizeMode: "cover",
-              height: 30,
-              width: 30,
-              borderRadius: 50,
-            }}
-            source={require("../assets/public/willyam.jpg")}
-          />
-        </TouchableOpacity>
+        {user == null ? (
+          <TouchableOpacity onPress={() => navigation.navigate("compte")}>
+            <Image
+              style={{
+                resizeMode: "contain",
+                height: 30,
+                width: 30,
+                borderRadius: 50,
+              }}
+              source={require("../assets/public/user.png")}
+            />
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity onPress={() => navigation.navigate("compte")}>
+            <Image
+              style={{
+                resizeMode: "cover",
+                height: 30,
+                width: 30,
+                borderRadius: 50,
+              }}
+              source={{ uri: url + "" + user }}
+            />
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );
-};
+}
