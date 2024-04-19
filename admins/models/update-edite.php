@@ -24,7 +24,7 @@ function add(){
 	}
 
 	require 'fonctions/db.php';
-	$db = db();
+	$db = db(); 
 
 	
 	try {
